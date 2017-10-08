@@ -1,0 +1,59 @@
+﻿using FaceMaterial.Vector.D2;
+
+namespace FaceMaterial.Vector.D3
+{
+    public class Point3D : Point3<double, Point3D>
+    {
+
+        public Point3D(double val)
+        {
+            X = val;
+            Y = val;
+            Z = val;
+        }
+        public Point3D(double x, double y, double z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
+        public static Point3D NullPoint { get => new Point3D(0); }
+        public static bool IsEmpty(Point3D a) => a.Equals(NullPoint);
+
+        public override bool EqualsTo(Point3D b) => EqualsToX(b) && EqualsToY(b) && EqualsToZ(b);
+        public override bool EqualsToX(Point3D b) => X == b.X;
+        public override bool EqualsToY(Point3D b) => Y == b.Y;
+        public override bool EqualsToZ(Point3D b) => Z == b.Z;
+
+        public override bool EqualsToXY(Point3D b) => EqualsToX(b) && EqualsToY(b);
+        public override bool EqualsToXZ(Point3D b) => EqualsToX(b) && EqualsToZ(b);
+        public override bool EqualsToYZ(Point3D b) => EqualsToY(b) && EqualsToZ(b);
+
+        public override bool EqualsXYZ() => X == Y && Y == Z;
+        public override bool EqualsXY() => X == Y;
+        public override bool EqualsYZ() => Y == Z;
+        public override bool EqualsXZ() => X == Z;
+
+        public Point3D MovePoint(Vector3D vector) => new Point3D(X + vector.X, Y + vector.Y, Z + vector.Z);
+        public Point3D MovePoint(double x, double y, double z) => MovePoint(new Vector3D(x,y,z));
+
+        public static Vector3D Delta(Point3D a, Point3D b) => (Vector3D)b - a;
+        public static Vector3D Delta(Point3D a, double x_second, double y_second, double z_second) 
+            => Delta(a, new Point3D(x_second, y_second, z_second));
+        public static Vector3D Delta(double x_first, double y_first, double z_first, double x_second, double y_second, double z_second) 
+            => Delta(new Point3D(x_first, y_first, z_first), new Point3D(x_second, y_second, z_second));
+
+        /// <summary>
+        /// Convert the Vector to String
+        /// </summary>
+        /// <returns>X:x_value Y:y_value Z:z_value</returns>
+        public override string ToString() => this;
+        public static implicit operator string(Point3D a) => $"{a.X} {a.Y} {a.Z}";
+
+        public static implicit operator Vector3D(Point3D pointA) => new Vector3D(pointA.X, pointA.Y, pointA.Z);
+
+        public static explicit operator Vector2D(Point3D pointA) => new Vector2D(pointA.X, pointA.Y);
+        public static explicit operator Point2D(Point3D pointA) => new Point2D(pointA.X, pointA.Y);
+    }
+}
