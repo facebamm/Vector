@@ -1,4 +1,4 @@
-﻿namespace FaceMaterial.Vector.Interfaces
+﻿namespace FaceMaterial.Terrain.Interfaces
 { 
     public abstract class Vector3<T,V> : Vector<T, V>
     {

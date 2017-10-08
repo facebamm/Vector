@@ -1,0 +1,5 @@
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vector\bin\Release\Vectoren.dll
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vector\bin\Release\Vectoren.pdb
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vector\obj\Release\Terrain.csproj.CoreCompileInputs.cache
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vector\obj\Release\Vectoren.dll
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vector\obj\Release\Vectoren.pdb

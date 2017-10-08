@@ -1,7 +1,7 @@
-﻿using FaceMaterial.Vector.D2;
-using FaceMaterial.Vector.Interfaces;
+﻿using FaceMaterial.Terrain.Dimension2;
+using FaceMaterial.Terrain.Interfaces;
 
-namespace FaceMaterial.Vector.D3
+namespace FaceMaterial.Terrain.Dimension3
 {
     public class Point3D : Point3<double, Point3D, Vector3D>
     {
@@ -57,7 +57,7 @@ namespace FaceMaterial.Vector.D3
 
         public static implicit operator Vector3D(Point3D pointA) => new Vector3D(pointA.X, pointA.Y, pointA.Z);
 
-        public static explicit operator D2.Vector(Point3D pointA) => new D2.Vector(pointA.X, pointA.Y);
-        public static explicit operator Point(Point3D pointA) => new Point(pointA.X, pointA.Y);
+        public static explicit operator Dimension2.Vector2D(Point3D pointA) => new Dimension2.Vector2D(pointA.X, pointA.Y);
+        public static explicit operator Point2D(Point3D pointA) => new Point2D(pointA.X, pointA.Y);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace FaceMaterial.Vector
+namespace FaceMaterial.Terrain
 {
     [Flags]
     public enum CompareResult

@@ -1,4 +1,4 @@
-﻿namespace FaceMaterial.Vector.Interfaces
+﻿namespace FaceMaterial.Terrain.Interfaces
 {
     public abstract class VectorFunction<T, F, P> {
         public T PositionVector { get; protected set; }

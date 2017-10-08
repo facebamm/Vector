@@ -1,4 +1,4 @@
-﻿namespace FaceMaterial.Vector.Interfaces
+﻿namespace FaceMaterial.Terrain.Interfaces
 {
     public abstract class Point<T, P, V>
     {

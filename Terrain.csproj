@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Vectoren</RootNamespace>
     <AssemblyName>Vectoren</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,12 +37,12 @@
     <Compile Include="Interfaces\2D\Vector.cs" />
     <Compile Include="2D\Point2D.cs" />
     <Compile Include="2D\Vector.cs" />
-    <Compile Include="2D\VectroFunction2D.cs" />
+    <Compile Include="2D\VectorFunction2D.cs" />
     <Compile Include="Interfaces\3D\Point3.cs" />
     <Compile Include="Interfaces\3D\Vector3.cs" />
     <Compile Include="3D\Point3D.cs" />
     <Compile Include="3D\Vector3D.cs" />
-    <Compile Include="3D\VectroFunction3D.cs" />
+    <Compile Include="3D\VectorFunction3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\VectorFunction.cs" />
   </ItemGroup>

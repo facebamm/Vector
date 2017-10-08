@@ -1,18 +1,18 @@
-﻿using FaceMaterial.Vector.Interfaces;
-namespace FaceMaterial.Vector.D2
+﻿using FaceMaterial.Terrain.Interfaces;
+namespace FaceMaterial.Terrain.Dimension2
 {
-    public class VectroFunction2D : VectorFunction<Vector, VectroFunction2D, Point>
+    public class VectorFunction2D : VectorFunction<Vector2D, VectorFunction2D, Point2D>
     {
-        public VectroFunction2D(Vector positionvector, Vector directionvector)
+        public VectorFunction2D(Vector2D positionvector, Vector2D directionvector)
         {
             PositionVector = positionvector;
             DirectionVector = directionvector;
         }
 
-        public override CompareResult CompareTo(VectroFunction2D f)
+        public override CompareResult CompareTo(VectorFunction2D f)
         {
 
-            bool kolli = Vector.IsKollinaer(DirectionVector, f.DirectionVector);
+            bool kolli = Vector2D.IsKollinaer(DirectionVector, f.DirectionVector);
 
             if (kolli)
                 if (IsElement(f.PositionVector))
@@ -26,24 +26,24 @@ namespace FaceMaterial.Vector.D2
             return CompareResult.Skew;
         }
 
-        public override Point GetIntersectPointTo(VectroFunction2D f)
+        public override Point2D GetIntersectPointTo(VectorFunction2D f)
         {
-            IsIntersectTo(f, out Point p);
+            IsIntersectTo(f, out Point2D p);
             return p;
         }
 
-        public override bool IsElement(Point point)
+        public override bool IsElement(Point2D point)
         {
-            if (DirectionVector.Equals(Vector.NullVector))
+            if (DirectionVector.Equals(Vector2D.NullVector))
                 return PositionVector.Equals(point);
 
-            Vector vec = point - PositionVector;
+            Vector2D vec = point - PositionVector;
             vec = vec / DirectionVector;
 
             return vec.X == vec.Y;
         }
 
-        public override bool IsEqualTo(VectroFunction2D f)
+        public override bool IsEqualTo(VectorFunction2D f)
         {
             CalcParameter(f, out double r, out double s);
 
@@ -53,32 +53,32 @@ namespace FaceMaterial.Vector.D2
             return Yg == Yh;
         }
 
-        public override bool IsIdenticalTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Skew;
-        public override bool IsIntersectTo(VectroFunction2D f, out Point point)
+        public override bool IsIdenticalTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsIntersectTo(VectorFunction2D f, out Point2D point)
         {
             bool isintersect = IsIdenticalTo(f);
-            point = Point.NullPoint;
+            point = Point2D.NullPoint;
 
             if (isintersect)
             {
                 CalcParameter(f, out double r, out double s);
-                Vector res = Value(r) - (Vector) f.Value(s);
+                Vector2D res = Value(r) - (Vector2D) f.Value(s);
                 point = res;
             }
 
             return isintersect;
         }
 
-        public override bool IsParallelTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Parallel;
-        public override bool IsSkewTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsParallelTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Parallel;
+        public override bool IsSkewTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Skew;
 
-        public override Point Value(double r) => PositionVector + r * DirectionVector;
-        public override void CalcParameter(VectroFunction2D f, out double r, out double s)
+        public override Point2D Value(double r) => PositionVector + r * DirectionVector;
+        public override void CalcParameter(VectorFunction2D f, out double r, out double s)
         {
             r = double.NaN;
             s = double.NaN;
 
-            Vector a = PositionVector,
+            Vector2D a = PositionVector,
                      b = DirectionVector,
                      c = f.PositionVector,
                      d = f.DirectionVector;

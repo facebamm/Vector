@@ -1,5 +1,5 @@
-﻿using FaceMaterial.Vector.Interfaces;
-namespace FaceMaterial.Vector.D3
+﻿using FaceMaterial.Terrain.Interfaces;
+namespace FaceMaterial.Terrain.Dimension3
 {
     public class Vector3D : Vector3<double,Vector3D>
     {
