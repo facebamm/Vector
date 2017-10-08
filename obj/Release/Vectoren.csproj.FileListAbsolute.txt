@@ -1,5 +1,6 @@
-C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vectoren\bin\Release\Vectoren.dll
-C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vectoren\bin\Release\Vectoren.pdb
-C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vectoren\obj\Release\Vectoren.csproj.CoreCompileInputs.cache
-C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vectoren\obj\Release\Vectoren.dll
-C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Vectoren\obj\Release\Vectoren.pdb
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\bin\Release\Vectoren.dll
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\bin\Release\Vectoren.pdb
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\obj\Release\Vectoren.csprojResolveAssemblyReference.cache
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\obj\Release\Vectoren.csproj.CoreCompileInputs.cache
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\obj\Release\Vectoren.dll
+C:\Users\Facebamm\Documents\Visual Studio 2017\Projects\FaceMaterial\Test\Vectoren\obj\Release\Vectoren.pdb

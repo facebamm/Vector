@@ -1,17 +1,18 @@
-﻿namespace FaceMaterial.Vector.D2
+﻿using FaceMaterial.Vector.Interfaces;
+namespace FaceMaterial.Vector.D2
 {
-    public class VectorFunction2D : VectorFunction<Vector2D, VectorFunction2D, Point2D>
+    public class VectroFunction2D : VectorFunction<Vector, VectroFunction2D, Point>
     {
-        public VectorFunction2D(Vector2D positionvector, Vector2D directionvector)
+        public VectroFunction2D(Vector positionvector, Vector directionvector)
         {
             PositionVector = positionvector;
             DirectionVector = directionvector;
         }
 
-        public override CompareResult CompareTo(VectorFunction2D f)
+        public override CompareResult CompareTo(VectroFunction2D f)
         {
 
-            bool kolli = Vector2D.IsKollinaer(DirectionVector, f.DirectionVector);
+            bool kolli = Vector.IsKollinaer(DirectionVector, f.DirectionVector);
 
             if (kolli)
                 if (IsElement(f.PositionVector))
@@ -25,24 +26,24 @@
             return CompareResult.Skew;
         }
 
-        public override Point2D GetIntersectPointTo(VectorFunction2D f)
+        public override Point GetIntersectPointTo(VectroFunction2D f)
         {
-            IsIntersectTo(f, out Point2D p);
+            IsIntersectTo(f, out Point p);
             return p;
         }
 
-        public override bool IsElement(Point2D point)
+        public override bool IsElement(Point point)
         {
-            if (DirectionVector.Equals(Vector2D.NullVector))
+            if (DirectionVector.Equals(Vector.NullVector))
                 return PositionVector.Equals(point);
 
-            Vector2D vec = point - PositionVector;
+            Vector vec = point - PositionVector;
             vec = vec / DirectionVector;
 
             return vec.X == vec.Y;
         }
 
-        public override bool IsEqualTo(VectorFunction2D f)
+        public override bool IsEqualTo(VectroFunction2D f)
         {
             CalcParameter(f, out double r, out double s);
 
@@ -52,32 +53,32 @@
             return Yg == Yh;
         }
 
-        public override bool IsIdenticalTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Skew;
-        public override bool IsIntersectTo(VectorFunction2D f, out Point2D point)
+        public override bool IsIdenticalTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsIntersectTo(VectroFunction2D f, out Point point)
         {
             bool isintersect = IsIdenticalTo(f);
-            point = Point2D.NullPoint;
+            point = Point.NullPoint;
 
             if (isintersect)
             {
                 CalcParameter(f, out double r, out double s);
-                Vector2D res = Value(r) - (Vector2D) f.Value(s);
+                Vector res = Value(r) - (Vector) f.Value(s);
                 point = res;
             }
 
             return isintersect;
         }
 
-        public override bool IsParallelTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Parallel;
-        public override bool IsSkewTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsParallelTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Parallel;
+        public override bool IsSkewTo(VectroFunction2D f) => CompareTo(f) == CompareResult.Skew;
 
-        public override Point2D Value(double r) => PositionVector + r * DirectionVector;
-        public override void CalcParameter(VectorFunction2D f, out double r, out double s)
+        public override Point Value(double r) => PositionVector + r * DirectionVector;
+        public override void CalcParameter(VectroFunction2D f, out double r, out double s)
         {
             r = double.NaN;
             s = double.NaN;
 
-            Vector2D a = PositionVector,
+            Vector a = PositionVector,
                      b = DirectionVector,
                      c = f.PositionVector,
                      d = f.DirectionVector;

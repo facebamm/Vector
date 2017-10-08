@@ -1,20 +1,21 @@
-﻿namespace FaceMaterial.Vector.D3
+﻿using FaceMaterial.Vector.Interfaces;
+namespace FaceMaterial.Vector.D3
 {
-    public class VectorFunction3D : VectorFunction<Vector3D, VectorFunction3D, Point3D>
+    public class VectroFunction3D : VectorFunction<Vector3D, VectroFunction3D, Point3D>
     {
-        public VectorFunction3D(Vector3D positionvector, Vector3D directionvector)
+        public VectroFunction3D(Vector3D positionvector, Vector3D directionvector)
         {
             PositionVector = positionvector;
             DirectionVector = directionvector;
         }
 
-        public override CompareResult CompareTo(VectorFunction3D f)
+        public override CompareResult CompareTo(VectroFunction3D f)
         {
 
             bool kolli = Vector3D.IsKollinaer(DirectionVector, f.DirectionVector);
 
             if (kolli)
-                if (IsElement((Point3D)f.PositionVector))
+                if (IsElement(f.PositionVector))
                     return CompareResult.Identical;
                 else
                     return CompareResult.Parallel;
@@ -25,7 +26,7 @@
             return CompareResult.Skew;
         }
 
-        public override Point3D GetIntersectPointTo(VectorFunction3D f)
+        public override Point3D GetIntersectPointTo(VectroFunction3D f)
         {
             IsIntersectTo(f, out Point3D p);
             return p;
@@ -41,7 +42,7 @@
             return vec.X == vec.Y && vec.Y == vec.Z;
         }
 
-        public override bool IsEqualTo(VectorFunction3D f) {
+        public override bool IsEqualTo(VectroFunction3D f) {
             CalcParameter(f, out double r, out double s);
 
             double Zg = PositionVector.Z + (r * DirectionVector.Z);
@@ -50,8 +51,8 @@
             return Zg == Zh;
         }
 
-        public override bool IsIdenticalTo(VectorFunction3D f) => CompareTo(f) == CompareResult.Skew;
-        public override bool IsIntersectTo(VectorFunction3D f, out Point3D point)
+        public override bool IsIdenticalTo(VectroFunction3D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsIntersectTo(VectroFunction3D f, out Point3D point)
         {
             bool isintersect = IsIdenticalTo(f);
             point = Point3D.NullPoint;
@@ -65,11 +66,11 @@
             return isintersect;
         }
 
-        public override bool IsParallelTo(VectorFunction3D f) => CompareTo(f) == CompareResult.Parallel;
-        public override bool IsSkewTo(VectorFunction3D f) => CompareTo(f) == CompareResult.Skew;
+        public override bool IsParallelTo(VectroFunction3D f) => CompareTo(f) == CompareResult.Parallel;
+        public override bool IsSkewTo(VectroFunction3D f) => CompareTo(f) == CompareResult.Skew;
 
         public override Point3D Value(double r) => (Point3D) (PositionVector + r * DirectionVector);
-        public override void CalcParameter(VectorFunction3D f, out double r, out double s)
+        public override void CalcParameter(VectroFunction3D f, out double r, out double s)
         {
             r = double.NaN;
             s = double.NaN;

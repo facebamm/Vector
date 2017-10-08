@@ -1,4 +1,5 @@
-﻿namespace FaceMaterial.Vector.D3
+﻿using FaceMaterial.Vector.Interfaces;
+namespace FaceMaterial.Vector.D3
 {
     public class Vector3D : Vector3<double,Vector3D>
     {
@@ -22,7 +23,8 @@
         }
 
         public static Vector3D NullVector { get => new Vector3D(0); }
-        public override bool IsEmpty(Vector3D a) => a.Equals(NullVector);
+        public override bool IsEmpty() => Equals(NullVector);
+        public override double Value() => System.Math.Sqrt((X.Sqr() + Y.Sqr() + Z.Sqr()));
 
         public override bool EqualsToX(Vector3D b) => X == b.X;
         public override bool EqualsToY(Vector3D b) => Y == b.Y;
@@ -36,10 +38,10 @@
         public override bool EqualsTo(Vector3D b) => EqualsToX(b) && EqualsToY(b) && EqualsToZ(b);
 
         public override bool EqualsXYZ() => X == Y && Y == Z;
-        public override bool EqualsToXY() => X == Y;
-        public override bool EqualsToYZ() => Y == Z;
-        public override bool EqualsToXZ() => X == Z;
-
+        public override bool EqualsXY() => X == Y;
+        public override bool EqualsYZ() => Y == Z;
+        public override bool EqualsXZ() => X == Z;
+        
         public override string ToString() => $"{X} {Y} {Z}";
 
         protected override Vector3D Add(Vector3D vectorA) => new Vector3D(X + vectorA.X, Y + vectorA.Y, Z + vectorA.Z);
