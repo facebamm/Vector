@@ -36,7 +36,7 @@ namespace FaceMaterial.Terrain.Dimension3
             if (DirectionVector.Equals(Vector3D.NullVector))
                 return PositionVector.Equals((Vector3D)point);
 
-            Vector3D vec = (Vector3D)point - PositionVector;
+            Vector3D vec = point - PositionVector;
             vec = vec / DirectionVector;
 
             return vec.X == vec.Y && vec.Y == vec.Z;
@@ -59,7 +59,7 @@ namespace FaceMaterial.Terrain.Dimension3
 
             if (isintersect) {
                 CalcParameter(f, out double r, out double s);
-                Vector3D res = (Vector3D) Value(r) - (Vector3D) f.Value(s);
+                Vector3D res = (Vector3D) GetPoint(r) - (Vector3D) f.GetPoint(s);
                 point = (Point3D) res;
             }
 
@@ -69,7 +69,11 @@ namespace FaceMaterial.Terrain.Dimension3
         public override bool IsParallelTo(VectorFunction3D f) => CompareTo(f) == CompareResult.Parallel;
         public override bool IsSkewTo(VectorFunction3D f) => CompareTo(f) == CompareResult.Skew;
 
-        public override Point3D Value(double r) => (Point3D) (PositionVector + r * DirectionVector);
+        public override Point3D GetPoint(double r) => PositionVector + r * DirectionVector;
+        public override bool GetParameter(Point3D point, out Vector3D vector) {
+            vector = point - PositionVector / DirectionVector;
+            return IsElement(point);
+        }
         public override void CalcParameter(VectorFunction3D f, out double r, out double s)
         {
             r = double.NaN;
@@ -83,5 +87,8 @@ namespace FaceMaterial.Terrain.Dimension3
             s = ((b.X * (c.Y - a.Y)) - (b.Y * (a.X + c.X))) / ((b.Y * d.X) - (b.X * d.Y));
             r = ((d.X * s) + c.X - a.X) / b.X;
         }
+
+        public override string ToString() => this;
+        public static implicit operator string(VectorFunction3D fun) => $"g: x = ({fun.PositionVector}) + r({fun.DirectionVector})";
     }
 }

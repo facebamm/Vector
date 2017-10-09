@@ -86,5 +86,6 @@ namespace FaceMaterial.Terrain.Dimension3
         }
        
         public static implicit operator Point3D(Vector3D vector) => new Point3D(vector.X, vector.Y, vector.Z);
+        public static implicit operator string(Vector3D a) => $"{a.X} {a.Y} {a.Z}";
     }
 }

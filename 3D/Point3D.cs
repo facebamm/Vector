@@ -57,7 +57,7 @@ namespace FaceMaterial.Terrain.Dimension3
 
         public static implicit operator Vector3D(Point3D pointA) => new Vector3D(pointA.X, pointA.Y, pointA.Z);
 
-        public static explicit operator Dimension2.Vector2D(Point3D pointA) => new Dimension2.Vector2D(pointA.X, pointA.Y);
+        public static explicit operator Vector2D(Point3D pointA) => new Dimension2.Vector2D(pointA.X, pointA.Y);
         public static explicit operator Point2D(Point3D pointA) => new Point2D(pointA.X, pointA.Y);
     }
 }

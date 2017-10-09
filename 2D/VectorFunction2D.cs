@@ -37,8 +37,7 @@ namespace FaceMaterial.Terrain.Dimension2
             if (DirectionVector.Equals(Vector2D.NullVector))
                 return PositionVector.Equals(point);
 
-            Vector2D vec = point - PositionVector;
-            vec = vec / DirectionVector;
+            Vector2D vec = point - PositionVector / DirectionVector;
 
             return vec.X == vec.Y;
         }
@@ -62,7 +61,7 @@ namespace FaceMaterial.Terrain.Dimension2
             if (isintersect)
             {
                 CalcParameter(f, out double r, out double s);
-                Vector2D res = Value(r) - (Vector2D) f.Value(s);
+                Vector2D res = GetPoint(r) - (Vector2D) f.GetPoint(s);
                 point = res;
             }
 
@@ -72,7 +71,13 @@ namespace FaceMaterial.Terrain.Dimension2
         public override bool IsParallelTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Parallel;
         public override bool IsSkewTo(VectorFunction2D f) => CompareTo(f) == CompareResult.Skew;
 
-        public override Point2D Value(double r) => PositionVector + r * DirectionVector;
+        public override Point2D GetPoint(double r) => PositionVector + r * DirectionVector;
+        public override bool GetParameter(Point2D point, out Vector2D vector)
+        {
+            vector = point - PositionVector / DirectionVector;
+            return IsElement(point);
+        }
+
         public override void CalcParameter(VectorFunction2D f, out double r, out double s)
         {
             r = double.NaN;
@@ -86,5 +91,7 @@ namespace FaceMaterial.Terrain.Dimension2
             s = ((b.X * (c.Y - a.Y)) - (b.Y * (a.X + c.X))) / ((b.Y * d.X) - (b.X * d.Y));
             r = ((d.X * s) + c.X - a.X) / b.X;
         }
+        public override string ToString() => this;
+        public static implicit operator string(VectorFunction2D fun) => $"g: x = ({fun.PositionVector}) + r({fun.DirectionVector})";
     }
 }

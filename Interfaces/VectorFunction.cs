@@ -13,9 +13,13 @@
         public abstract bool IsElement(P point);
 
         public abstract P GetIntersectPointTo(F f);
-        public abstract P Value(double r);
+        public abstract P GetPoint(double r);
+        public abstract bool GetParameter(P point, out T vector);
 
         public abstract CompareResult CompareTo(F f);
         public abstract void CalcParameter(F f, out double r, out double s);
+        
+        public static implicit operator string(VectorFunction<T, F, P> fun) => $"g: x = ({fun.PositionVector}) + r({fun.DirectionVector})";
+           
     }
 }
