@@ -39,7 +39,7 @@ namespace FaceMaterial.Terrain.Dimension3
             Vector3D vec = point - PositionVector;
             vec = vec / DirectionVector;
 
-            return vec.X == vec.Y && vec.Y == vec.Z;
+            return vec.EqualsXY() || vec.EqualsXZ() || vec.EqualsYZ();
         }
 
         public override bool IsEqualTo(VectorFunction3D f) {

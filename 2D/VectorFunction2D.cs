@@ -11,7 +11,6 @@ namespace FaceMaterial.Terrain.Dimension2
 
         public override CompareResult CompareTo(VectorFunction2D f)
         {
-
             bool kolli = Vector2D.IsKollinaer(DirectionVector, f.DirectionVector);
 
             if (kolli)
