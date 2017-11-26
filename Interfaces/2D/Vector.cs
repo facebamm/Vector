@@ -1,6 +1,6 @@
 ﻿namespace FaceMaterial.Terrain.Interfaces
 {
-    public abstract class Vector<T, V>  {
+    public abstract class Vector<T, V> where V : Vector<T, V> {
 
         public T X { get; set; }
         public T Y { get; set; }
