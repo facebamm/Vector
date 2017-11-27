@@ -91,6 +91,8 @@ namespace FaceMaterial.Terrain.Dimension2
             r = ((d.X * s) + c.X - a.X) / b.X;
         }
         public override string ToString() => this;
+        public override bool IsPerpendicularTo(VectorFunction2D f) => throw new System.NotImplementedException();
+
         public static implicit operator string(VectorFunction2D fun) => $"g: x = ({fun.PositionVector}) + r({fun.DirectionVector})";
     }
 }
