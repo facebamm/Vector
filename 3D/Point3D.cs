@@ -5,7 +5,6 @@ namespace FaceMaterial.Terrain.Dimension3
 {
     public class Point3D : Point3<double, Point3D, Vector3D>
     {
-
         public Point3D(double val)
         {
             X = val;
@@ -39,7 +38,7 @@ namespace FaceMaterial.Terrain.Dimension3
         public override Point3D Move(Vector3D vector) => Move(vector.X, vector.Y, vector.Z);
         public override Point3D Move(double x) => Move(x, 0, 0);
         public override Point3D Move(double x, double y) => Move(x, y,0);
-        public override Point3D Move(double x, double y, double z) => new Point3D(X + X, Y + Y, Z + Z);
+        public override Point3D Move(double x, double y, double z) => new Point3D(X + x, Y + y, Z + z);
 
         public static Vector3D Delta(Point3D a, Point3D b) => (Vector3D)b - a;
         public static Vector3D Delta(Point3D a, double x_second, double y_second, double z_second) 
@@ -57,7 +56,7 @@ namespace FaceMaterial.Terrain.Dimension3
 
         public static implicit operator Vector3D(Point3D pointA) => new Vector3D(pointA.X, pointA.Y, pointA.Z);
 
-        public static explicit operator Vector2D(Point3D pointA) => new Dimension2.Vector2D(pointA.X, pointA.Y);
+        public static explicit operator Vector2D(Point3D pointA) => new Vector2D(pointA.X, pointA.Y);
         public static explicit operator Point2D(Point3D pointA) => new Point2D(pointA.X, pointA.Y);
     }
 }

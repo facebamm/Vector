@@ -26,6 +26,8 @@
         protected abstract V Mul(T otherVector);
         protected abstract V Div(T otherVector);
 
+        public abstract T Scalar();
+
         public static V operator +(Vector<T, V> a, V b) => a.Add(b);
         public static V operator -(Vector<T, V> a, V b) => a.Sub(b);
         public static V operator *(Vector<T, V> a, V b) => a.Mul(b);

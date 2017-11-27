@@ -31,6 +31,7 @@ namespace FaceMaterial.Terrain.Dimension3
             IsIntersectTo(f, out Point3D p);
             return p;
         }
+        public override bool IsPerpendicularTo(VectorFunction3D f) => DirectionVector.Cross(f.DirectionVector).Scalar() == 0;
 
         public override bool IsElement(Point3D point) {
             if (DirectionVector.Equals(Vector3D.NullVector))
@@ -89,6 +90,7 @@ namespace FaceMaterial.Terrain.Dimension3
         }
 
         public override string ToString() => this;
+
         public static implicit operator string(VectorFunction3D fun) => $"g: x = ({fun.PositionVector}) + r({fun.DirectionVector})";
     }
 }

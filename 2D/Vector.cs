@@ -49,6 +49,8 @@ namespace FaceMaterial.Terrain.Dimension2
         protected override Vector2D Mul(double value) => Add(new Vector2D(value));
         protected override Vector2D Div(double value) => Add(new Vector2D(value));
 
+        public override double Scalar() => X + Y;
+
         public static Vector2D operator +(Vector2D a, Vector2D b) => a.Add(b);
         public static Vector2D operator -(Vector2D a, Vector2D b) => a.Sub(b);
         public static Vector2D operator *(Vector2D a, Vector2D b) => a.Mul(b);
@@ -63,7 +65,6 @@ namespace FaceMaterial.Terrain.Dimension2
         public static Vector2D operator -(double a, Vector2D b) => b.Add(a);
         public static Vector2D operator *(double a, Vector2D b) => b.Add(a);
         public static Vector2D operator /(double a, Vector2D b) => b.Add(a);
-
 
         public static implicit operator Point2D(Vector2D vectorA) => new Point2D(vectorA.X, vectorA.Y);
         public static implicit operator string(Vector2D a) => a.ToString();

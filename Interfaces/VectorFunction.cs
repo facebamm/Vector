@@ -9,7 +9,7 @@
         public abstract bool IsIntersectTo(F f, out P point);
         public abstract bool IsSkewTo(F f);
         public abstract bool IsEqualTo(F f);
-
+        public abstract bool IsPerpendicularTo(F f);
         public abstract bool IsElement(P point);
 
         public abstract P GetIntersectPointTo(F f);

@@ -84,7 +84,10 @@ namespace FaceMaterial.Terrain.Dimension3
             Vector3D result = vectorA / vectorB;
             return result.X == result.Y && result.Y == result.Z;
         }
-       
+
+        public override Vector3D Cross(Vector3D b) => new Vector3D((Y  * b.Z) - (Z * b.Y), -((Z * b.X) - (X * b.Z)), (X * b.Y) - (Y * b.X));
+        public override double Scalar() => throw new System.NotImplementedException();
+
         public static implicit operator Point3D(Vector3D vector) => new Point3D(vector.X, vector.Y, vector.Z);
         public static implicit operator string(Vector3D a) => $"{a.X} {a.Y} {a.Z}";
     }

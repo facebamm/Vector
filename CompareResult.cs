@@ -7,6 +7,7 @@ namespace FaceMaterial.Terrain
         Identical,
         Parallel,
         Intersect,
+        Perpendicular,
         Skew
     }
 }
